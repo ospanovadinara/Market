@@ -18,24 +18,24 @@ final class MainViewController: UIViewController {
             image: UIImage(named: "fruits_image")),
         CategoryModel(
             id: UUID(),
-            name: "Фрукты",
-            image: UIImage(named: "fruits_image")),
+            name: "Сухофрукты",
+            image: UIImage(named: "dried_fruits_image")),
         CategoryModel(
             id: UUID(),
-            name: "Фрукты",
-            image: UIImage(named: "fruits_image")),
+            name: "Овощи",
+            image: UIImage(named: "veggie_image")),
         CategoryModel(
             id: UUID(),
-            name: "Фрукты",
-            image: UIImage(named: "fruits_image")),
+            name: "Зелень ",
+            image: UIImage(named: "greens_image")),
         CategoryModel(
             id: UUID(),
-            name: "Фрукты",
-            image: UIImage(named: "fruits_image")),
+            name: "Чай Кофе",
+            image: UIImage(named: "tea_image")),
         CategoryModel(
             id: UUID(),
-            name: "Фрукты",
-            image: UIImage(named: "fruits_image")),
+            name: "Молочные продукты",
+            image: UIImage(named: "milk_image")),
     ]
 
     // MARK: - UI
