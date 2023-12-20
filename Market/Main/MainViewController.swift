@@ -14,7 +14,7 @@ final class MainViewController: UIViewController {
         let label = UILabel()
         label.text = "Эко Маркет"
         label.textColor = UIColor(named: "Market Black")
-        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.font = AppFont.semibold.s24()
         return label
     }()
 

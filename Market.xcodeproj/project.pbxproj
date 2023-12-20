@@ -19,6 +19,10 @@
 		27FA58782B31741F004AC34A /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FA58772B31741F004AC34A /* TabItem.swift */; };
 		27FA587B2B318812004AC34A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 27FA587A2B318812004AC34A /* SnapKit */; };
 		27FA587D2B318812004AC34A /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 27FA587C2B318812004AC34A /* SnapKit-Dynamic */; };
+		27FE503D2B32B5870075BBE9 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE503C2B32B5870075BBE9 /* AppFont.swift */; };
+		27FE503E2B32B6B60075BBE9 /* TTNormsPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27FE503B2B32B5160075BBE9 /* TTNormsPro-Regular.ttf */; };
+		27FE503F2B32B6B90075BBE9 /* TTNormsPro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27FE503A2B32B50B0075BBE9 /* TTNormsPro-Medium.ttf */; };
+		27FE50402B32B6BB0075BBE9 /* TTNormsPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27FE50392B32B4FF0075BBE9 /* TTNormsPro-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		27FA58722B3173AF004AC34A /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		27FA58752B3173F3004AC34A /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		27FA58772B31741F004AC34A /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
+		27FE50392B32B4FF0075BBE9 /* TTNormsPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTNormsPro-Bold.ttf"; sourceTree = "<group>"; };
+		27FE503A2B32B50B0075BBE9 /* TTNormsPro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTNormsPro-Medium.ttf"; sourceTree = "<group>"; };
+		27FE503B2B32B5160075BBE9 /* TTNormsPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTNormsPro-Regular.ttf"; sourceTree = "<group>"; };
+		27FE503C2B32B5870075BBE9 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,9 +99,11 @@
 		27FA58682B316D94004AC34A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				27FE50382B32B4E90075BBE9 /* Fonts */,
 				27FA585C2B316C2B004AC34A /* Assets.xcassets */,
 				27FA585E2B316C2B004AC34A /* LaunchScreen.storyboard */,
 				27FA58612B316C2B004AC34A /* Info.plist */,
+				27FE503C2B32B5870075BBE9 /* AppFont.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -137,6 +147,16 @@
 				27FA58752B3173F3004AC34A /* InfoViewController.swift */,
 			);
 			path = Info;
+			sourceTree = "<group>";
+		};
+		27FE50382B32B4E90075BBE9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				27FE503B2B32B5160075BBE9 /* TTNormsPro-Regular.ttf */,
+				27FE503A2B32B50B0075BBE9 /* TTNormsPro-Medium.ttf */,
+				27FE50392B32B4FF0075BBE9 /* TTNormsPro-Bold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +226,9 @@
 			files = (
 				27FA58602B316C2B004AC34A /* LaunchScreen.storyboard in Resources */,
 				27FA585D2B316C2B004AC34A /* Assets.xcassets in Resources */,
+				27FE50402B32B6BB0075BBE9 /* TTNormsPro-Bold.ttf in Resources */,
+				27FE503E2B32B6B60075BBE9 /* TTNormsPro-Regular.ttf in Resources */,
+				27FE503F2B32B6B90075BBE9 /* TTNormsPro-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +241,7 @@
 			files = (
 				27FA58702B317338004AC34A /* BasketViewController.swift in Sources */,
 				27FA58582B316C28004AC34A /* TabBarViewController.swift in Sources */,
+				27FE503D2B32B5870075BBE9 /* AppFont.swift in Sources */,
 				27FA58542B316C28004AC34A /* AppDelegate.swift in Sources */,
 				27FA58762B3173F3004AC34A /* InfoViewController.swift in Sources */,
 				27FA58732B3173AF004AC34A /* HistoryViewController.swift in Sources */,
