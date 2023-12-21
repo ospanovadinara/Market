@@ -11,32 +11,8 @@ import SnapKit
 final class MainViewController: UIViewController {
 
     // MARK: - Private Properties
-    private var categoryModel: [CategoryModel] = [
-        CategoryModel(
-            id: UUID(),
-            name: "Фрукты",
-            image: UIImage(named: "fruits_image")),
-        CategoryModel(
-            id: UUID(),
-            name: "Сухофрукты",
-            image: UIImage(named: "dried_fruits_image")),
-        CategoryModel(
-            id: UUID(),
-            name: "Овощи",
-            image: UIImage(named: "veggie_image")),
-        CategoryModel(
-            id: UUID(),
-            name: "Зелень ",
-            image: UIImage(named: "greens_image")),
-        CategoryModel(
-            id: UUID(),
-            name: "Чай Кофе",
-            image: UIImage(named: "tea_image")),
-        CategoryModel(
-            id: UUID(),
-            name: "Молочные продукты",
-            image: UIImage(named: "milk_image")),
-    ]
+    private var categorieLoader = CategoriesLoader()
+    private var categories: [CategoryModel] = []
 
     // MARK: - UI
     private lazy var collectionViewLayout: UICollectionViewFlowLayout = {
@@ -77,6 +53,7 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        fetchCategories()
     }
 }
 
@@ -95,6 +72,24 @@ private extension MainViewController {
     }
 }
 
+private extension MainViewController {
+
+    // MARK: - CategoriesLoader
+    func fetchCategories() {
+        categorieLoader.fetchCategories { result in
+            switch result {
+            case .success(let categories):
+                DispatchQueue.main.async { [weak self] in
+                    self?.categories = categories
+                    self?.collectionView.reloadData()
+                }
+            case.failure(let error):
+                print("Error fetching categories: \(error)")
+            }
+        }
+    }
+}
+
 // MARK: - UICollectionViewDataSource
 extension MainViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -103,7 +98,7 @@ extension MainViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        categoryModel.count
+        categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, 
@@ -113,7 +108,7 @@ extension MainViewController: UICollectionViewDataSource {
             for: indexPath) as? MainCollectionViewCell else {
             fatalError("Could not cast to MainCollectionViewCell")
         }
-        let model = categoryModel[indexPath.item]
+        let model = categories[indexPath.item]
         cell.configureCell(with: model)
         return cell
     }

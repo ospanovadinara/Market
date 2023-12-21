@@ -7,13 +7,14 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class MainCollectionViewCell: UICollectionViewCell {
 
     // MARK: - UI
     lazy var imageView: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.layer.cornerRadius = 16
         return image
@@ -57,6 +58,7 @@ private extension MainCollectionViewCell {
         contentView.snp.makeConstraints { make in
             make.width.equalTo(166)
             make.height.equalTo(180)
+            make.edges.equalToSuperview()
         }
 
         imageView.snp.makeConstraints { make in
@@ -94,6 +96,10 @@ extension MainCollectionViewCell {
     // MARK: - Public Methods
     public func configureCell(with model: CategoryModel) {
         label.text = model.name
-        imageView.image = model.image
+        if let imageUrl = model.imageUrl, let url = URL(string: imageUrl) {
+            imageView.kf.setImage(with: url)
+        } else {
+            imageView.image = nil
+        }
     }
 }
