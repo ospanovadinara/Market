@@ -32,13 +32,17 @@ final class CustomSegmentedControl: UISegmentedControl {
         segmentedControl.setBackgroundImage(createImageWithColor(color: UIColor(named: "Market Green") ?? UIColor.green),
                                             for: .selected,
                                             barMetrics: .default)
+        segmentedControl.setDividerImage(createImageWithColor(color: .clear),
+                                         forLeftSegmentState: .normal,
+                                         rightSegmentState: .normal,
+                                         barMetrics: .default)
         return segmentedControl
     }()
 
     // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.addSubview(segmentedControl)
+        setupViews()
         setupConstraints()
     }
 
@@ -59,10 +63,15 @@ private extension CustomSegmentedControl {
         return image ?? UIImage()
     }
 
+    // MARK: - Setup Views
+    func setupViews() {
+        self.addSubview(segmentedControl)
+    }
+
     // MARK: - Setup Constraints
     func setupConstraints() {
         segmentedControl.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.leading.bottom.trailing.equalToSuperview()
         }
     }
 }
