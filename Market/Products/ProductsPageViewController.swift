@@ -6,17 +6,21 @@
 //
 
 import UIKit
+import SnapKit
 
 final class ProductsPageViewController: UIViewController {
 
     // MARK: - UI
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
+        searchBar.placeholder = "Быстрый поиск"
+        searchBar.searchBarStyle = .minimal
+        searchBar.delegate = self
         return searchBar
     }()
 
-    private lazy var segmentedControl: UISegmentedControl = {
-        let segmentedControl = UISegmentedControl()
+    private lazy var segmentedControl: CustomSegmentedControl = {
+        let segmentedControl = CustomSegmentedControl(frame: CGRect.zero)
         return segmentedControl
     }()
 
@@ -45,15 +49,34 @@ private extension ProductsPageViewController {
     }
 
     func setupViews() {
-
+        [searchBar,
+         segmentedControl
+        ].forEach {
+            view.addSubview($0)
+        }
     }
 
     func setupConstraints() {
+        searchBar.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(100)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.height.equalTo(44)
+        }
 
+        segmentedControl.snp.makeConstraints { make in
+            make.top.equalTo(searchBar.snp.bottom).offset(16)
+            make.leading.equalToSuperview().offset(16)
+            make.height.equalTo(27)
+        }
     }
 
     @objc
     func backButtonDidTap() {
         //TODO
     }
+}
+
+extension ProductsPageViewController: UISearchBarDelegate {
+    //TODO
 }

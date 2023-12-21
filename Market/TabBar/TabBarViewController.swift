@@ -27,7 +27,7 @@ private extension TabBarViewController {
         history.tabBarItem = tabItem(for: .history, title: "История")
         info.tabBarItem = tabItem(for: .info, title: "Инфо")
         setViewControllers([main, basket, history, info], animated: true)
-        selectedIndex = 0
+        selectedIndex = 1
 
         tabBar.layer.borderWidth = 1
         tabBar.layer.borderColor = UIColor.systemGray5.cgColor

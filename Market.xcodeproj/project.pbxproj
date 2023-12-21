@@ -10,6 +10,7 @@
 		27BDB0D32B340D15004B1D96 /* CategoriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BDB0D22B340D15004B1D96 /* CategoriesService.swift */; };
 		27BDB0D72B341DBA004B1D96 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 27BDB0D62B341DBA004B1D96 /* Kingfisher */; };
 		27BDB0DA2B342517004B1D96 /* ProductsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BDB0D92B342517004B1D96 /* ProductsPageViewController.swift */; };
+		27BDB0DC2B344D00004B1D96 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BDB0DB2B344D00004B1D96 /* CustomSegmentedControl.swift */; };
 		27FA58542B316C28004AC34A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FA58532B316C28004AC34A /* AppDelegate.swift */; };
 		27FA58562B316C28004AC34A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FA58552B316C28004AC34A /* SceneDelegate.swift */; };
 		27FA58582B316C28004AC34A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FA58572B316C28004AC34A /* TabBarViewController.swift */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		27BDB0D22B340D15004B1D96 /* CategoriesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesService.swift; sourceTree = "<group>"; };
 		27BDB0D92B342517004B1D96 /* ProductsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsPageViewController.swift; sourceTree = "<group>"; };
+		27BDB0DB2B344D00004B1D96 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		27FA58502B316C28004AC34A /* Market.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Market.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27FA58532B316C28004AC34A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27FA58552B316C28004AC34A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				27BDB0D92B342517004B1D96 /* ProductsPageViewController.swift */,
+				27BDB0DB2B344D00004B1D96 /* CustomSegmentedControl.swift */,
 			);
 			path = Products;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				27BDB0D32B340D15004B1D96 /* CategoriesService.swift in Sources */,
 				27FA58762B3173F3004AC34A /* InfoViewController.swift in Sources */,
 				27FA58732B3173AF004AC34A /* HistoryViewController.swift in Sources */,
+				27BDB0DC2B344D00004B1D96 /* CustomSegmentedControl.swift in Sources */,
 				27FE50442B32BFD90075BBE9 /* MainHeaderView.swift in Sources */,
 				27FA58562B316C28004AC34A /* SceneDelegate.swift in Sources */,
 				27FE50422B32BD630075BBE9 /* MainCollectionViewCell.swift in Sources */,
