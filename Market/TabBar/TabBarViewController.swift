@@ -19,7 +19,7 @@ private extension TabBarViewController {
     func setupTabBar() {
         view.backgroundColor = .systemBackground
         let main = UINavigationController(rootViewController: MainViewController())
-        let basket = UINavigationController(rootViewController: ProductsPageViewController() /*BasketViewController()*/)
+        let basket = UINavigationController(rootViewController: ProductsViewController() /*BasketViewController()*/)
         let history = UINavigationController(rootViewController: HistoryViewController())
         let info = UINavigationController(rootViewController: InfoViewController())
         main.tabBarItem = tabItem(for: .main, title: "Главная")

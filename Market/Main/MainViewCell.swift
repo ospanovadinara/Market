@@ -1,5 +1,5 @@
 //
-//  MainCollectionViewCell.swift
+//  MainViewCell.swift
 //  Market
 //
 //  Created by Dinara on 20.12.2023.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-final class MainCollectionViewCell: UICollectionViewCell {
+final class MainViewCell: UICollectionViewCell {
 
     // MARK: - UI
     lazy var imageView: UIImageView = {
@@ -47,7 +47,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
     }
 }
 
-private extension MainCollectionViewCell {
+private extension MainViewCell {
     func setupViews() {
         [imageView,
          label
@@ -88,10 +88,10 @@ private extension MainCollectionViewCell {
     }
 }
 
-extension MainCollectionViewCell {
+extension MainViewCell {
 
     // MARK: - Public Properties
-    public static let cellID = String(describing: MainCollectionViewCell.self)
+    public static let cellID = String(describing: MainViewCell.self)
 
     // MARK: - Public Methods
     public func configureCell(with model: CategoryModel) {

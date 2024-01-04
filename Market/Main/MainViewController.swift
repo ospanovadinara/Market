@@ -11,7 +11,7 @@ import SnapKit
 final class MainViewController: UIViewController {
 
     // MARK: - Private Properties
-    private var categorieLoader = CategoriesLoader()
+    private var categorieыLoader = CategoriesLoader()
     private var categories: [CategoryModel] = []
 
     // MARK: - UI
@@ -37,8 +37,8 @@ final class MainViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(
-            MainCollectionViewCell.self,
-            forCellWithReuseIdentifier: MainCollectionViewCell.cellID
+            MainViewCell.self,
+            forCellWithReuseIdentifier: MainViewCell.cellID
         )
         collectionView.register(
             MainHeaderView.self,
@@ -76,7 +76,7 @@ private extension MainViewController {
 
     // MARK: - CategoriesLoader
     func fetchCategories() {
-        categorieLoader.fetchCategories { result in
+        categorieыLoader.fetchCategories { result in
             switch result {
             case .success(let categories):
                 DispatchQueue.main.async { [weak self] in
@@ -104,8 +104,8 @@ extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, 
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: MainCollectionViewCell.cellID,
-            for: indexPath) as? MainCollectionViewCell else {
+            withReuseIdentifier: MainViewCell.cellID,
+            for: indexPath) as? MainViewCell else {
             fatalError("Could not cast to MainCollectionViewCell")
         }
         let model = categories[indexPath.item]
