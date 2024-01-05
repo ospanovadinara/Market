@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2758466E2B46C905008E52D6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2758466D2B46C905008E52D6 /* String.swift */; };
 		277C13802B3AECBB00BAFCFA /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C137F2B3AECBB00BAFCFA /* CategoryCell.swift */; };
 		277C13822B3AF17900BAFCFA /* ProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C13812B3AF17900BAFCFA /* ProductsView.swift */; };
 		277C13842B3AF5A200BAFCFA /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C13832B3AF5A200BAFCFA /* ProductCell.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2758466D2B46C905008E52D6 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		277C137F2B3AECBB00BAFCFA /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		277C13812B3AF17900BAFCFA /* ProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsView.swift; sourceTree = "<group>"; };
 		277C13832B3AF5A200BAFCFA /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
@@ -75,6 +77,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2758466C2B46C8E9008E52D6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2758466D2B46C905008E52D6 /* String.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		27BDB0D12B340CEE004B1D96 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +131,7 @@
 		27FA58522B316C28004AC34A /* Market */ = {
 			isa = PBXGroup;
 			children = (
+				2758466C2B46C8E9008E52D6 /* Extensions */,
 				27FA58672B316D6B004AC34A /* App */,
 				27FA58682B316D94004AC34A /* Resources */,
 				27FA586A2B316FA7004AC34A /* TabBar */,
@@ -303,6 +314,7 @@
 				27FA58562B316C28004AC34A /* SceneDelegate.swift in Sources */,
 				27FE50422B32BD630075BBE9 /* MainViewCell.swift in Sources */,
 				27FA58782B31741F004AC34A /* TabItem.swift in Sources */,
+				2758466E2B46C905008E52D6 /* String.swift in Sources */,
 				277C13842B3AF5A200BAFCFA /* ProductCell.swift in Sources */,
 				277C13822B3AF17900BAFCFA /* ProductsView.swift in Sources */,
 				27BDB0DA2B342517004B1D96 /* ProductsViewController.swift in Sources */,

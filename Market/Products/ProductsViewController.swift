@@ -60,7 +60,8 @@ private extension ProductsViewController {
         productsView.categoriesCollectionView.delegate = self
 
         // MARK: - Products CollectionView DataSource/Delegate
-        //TODO
+        productsView.productsCollectionView.dataSource = self
+        productsView.productsCollectionView.delegate = self
 
         // MARK: - Category Cell Registration
         productsView.categoriesCollectionView.register(
@@ -69,6 +70,10 @@ private extension ProductsViewController {
         )
 
         // MARK: - Product Cell Registration
+        productsView.productsCollectionView.register(
+            ProductCell.self,
+            forCellWithReuseIdentifier: ProductCell.cellID
+        )
 
         view.addSubview(productsView)
     }
@@ -88,9 +93,11 @@ extension ProductsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == productsView.categoriesCollectionView {
             return categories.count
-        } else {
+        } else if collectionView == productsView.productsCollectionView {
             return 6
         }
+
+        return 3
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -100,12 +107,15 @@ extension ProductsViewController: UICollectionViewDataSource {
                 for: indexPath) as? CategoryCell else {
                 fatalError("Could not cast to CategoryCell")
             }
-
             cell.label.text = categories[indexPath.item]
             return cell
         } else {
-            //TODO
-            return UICollectionViewCell()
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: ProductCell.cellID,
+                for: indexPath) as? ProductCell else {
+                fatalError("Could not cast to ProductCell")
+            }
+            return cell
         }
     }
 
@@ -128,10 +138,3 @@ extension ProductsViewController: UICollectionViewDelegateFlowLayout {
     //TODO
 }
 
-extension String {
-    func width(withConstrainedHeight height: CGFloat, font: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
-        return ceil(boundingBox.width)
-    }
-}

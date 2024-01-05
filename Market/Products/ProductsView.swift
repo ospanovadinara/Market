@@ -30,8 +30,10 @@ final class ProductsView: UIView {
 
     lazy var productsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: layout)
+        collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
 
@@ -51,7 +53,8 @@ private extension ProductsView {
     // MARK: - Setup Views
     func setupViews() {
         [searchBar,
-         categoriesCollectionView
+         categoriesCollectionView,
+         productsCollectionView
         ].forEach {
             self.addSubview($0)
         }
@@ -70,7 +73,12 @@ private extension ProductsView {
             make.top.equalTo(searchBar.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.height.equalTo(51)
+            make.height.equalTo(27)
+        }
+
+        productsCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(categoriesCollectionView.snp.bottom).offset(24)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
 }
