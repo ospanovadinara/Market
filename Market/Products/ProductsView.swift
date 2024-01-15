@@ -31,6 +31,8 @@ final class ProductsView: UIView {
     lazy var productsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = 11
+        layout.estimatedItemSize = .zero
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: layout)
         collectionView.showsVerticalScrollIndicator = false

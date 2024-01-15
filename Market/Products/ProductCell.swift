@@ -107,28 +107,28 @@ final class ProductCell: UICollectionViewCell {
 
 private extension ProductCell {
     func setupViews() {
+        contentView.addSubview(view)
 
-        [view,
-         stackView,
+        [stackView,
          subtitle,
          addButton
-        ].forEach { contentView.addSubview($0) }
-
+        ].forEach { view.addSubview($0)}
     }
     
     func setupConstraints() {
         contentView.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.leading.equalToSuperview().offset(16)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
             make.height.equalTo(228)
             make.width.equalTo(166)
         }
 
         view.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.leading.equalToSuperview().offset(16)
-            make.height.equalTo(228)
-            make.width.equalTo(166)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
 
         stackView.snp.makeConstraints { make in
