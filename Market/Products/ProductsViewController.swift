@@ -94,7 +94,7 @@ extension ProductsViewController: UICollectionViewDataSource {
         if collectionView == productsView.categoriesCollectionView {
             return categories.count
         } else if collectionView == productsView.productsCollectionView {
-            return 6
+            return 12
         }
 
         return 3
@@ -124,20 +124,15 @@ extension ProductsViewController: UICollectionViewDataSource {
             let labelWidth = categories[indexPath.item].width(withConstrainedHeight: 27, font: AppFont.medium.s16())
             let cellWidth = labelWidth + 12
             return CGSize(width: cellWidth, height: 27)
-        } else 
-        if collectionView == productsView.productsCollectionView {
-            let leftInset = CGFloat(16)
-            let rightInset = CGFloat(16)
-            let itemsPerRow = CGFloat(2)
-            let cellSpacing = CGFloat(11)
-            let padding = leftInset + rightInset + CGFloat(itemsPerRow - 1) * cellSpacing
-            let availableWidth = collectionView.frame.width - padding
-            let cellWidth = availableWidth / itemsPerRow
-            return CGSize(width: cellWidth, height: 148)
+        } else if collectionView == productsView.productsCollectionView {
+            let cellWidth = (collectionView.bounds.width - 16 * 3) / 2
+            let cellHeight: CGFloat = 228
+            return CGSize(width: cellWidth, height: cellHeight)
         } else  {
             return CGSize(width: 50, height: 50)
         }
     }
+
 }
 
 extension ProductsViewController: UICollectionViewDelegate {

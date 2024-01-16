@@ -30,9 +30,13 @@ final class ProductsView: UIView {
 
     lazy var productsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 11
-        layout.estimatedItemSize = .zero
+        layout.minimumLineSpacing = 11
+        layout.sectionInset = UIEdgeInsets(top: 0,
+                                           left: 16,
+                                           bottom: 0,
+                                           right: 16)
+        layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: layout)
         collectionView.showsVerticalScrollIndicator = false
@@ -66,8 +70,8 @@ private extension ProductsView {
     func setupConstraints() {
         searchBar.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(100)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
+            make.leading.equalToSuperview().offset(10)
+            make.trailing.equalToSuperview().offset(-10)
             make.height.equalTo(44)
         }
 

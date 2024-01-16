@@ -30,6 +30,8 @@ final class ProductCell: UICollectionViewCell {
         label.font = AppFont.medium.s14()
         label.textColor = UIColor(named: "Market Black")
         label.textAlignment = .left
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -107,12 +109,16 @@ final class ProductCell: UICollectionViewCell {
 
 private extension ProductCell {
     func setupViews() {
-        contentView.addSubview(view)
+        [imageView,
+        title
+        ].forEach { stackView.addArrangedSubview($0) }
 
         [stackView,
          subtitle,
          addButton
         ].forEach { view.addSubview($0)}
+
+        contentView.addSubview(view)
     }
     
     func setupConstraints() {
@@ -135,6 +141,12 @@ private extension ProductCell {
             make.top.equalToSuperview().offset(4)
             make.leading.equalToSuperview().offset(4)
             make.trailing.equalToSuperview().offset(-4)
+        }
+
+        imageView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(96)
         }
 
         subtitle.snp.makeConstraints { make in
