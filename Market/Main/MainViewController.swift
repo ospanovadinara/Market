@@ -11,7 +11,7 @@ import SnapKit
 final class MainViewController: UIViewController {
 
     // MARK: - Private Properties
-    private var categorieыLoader = CategoriesLoader()
+    private var categoriesLoader = CategoriesLoader()
     private var categories: [CategoryModel] = []
 
     // MARK: - UI
@@ -76,7 +76,7 @@ private extension MainViewController {
 
     // MARK: - CategoriesLoader
     func fetchCategories() {
-        categorieыLoader.fetchCategories { result in
+        categoriesLoader.fetchCategories { result in
             switch result {
             case .success(let categories):
                 DispatchQueue.main.async { [weak self] in

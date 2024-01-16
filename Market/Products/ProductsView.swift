@@ -114,6 +114,7 @@ private extension ProductsView {
             make.top.equalTo(categoriesCollectionView.snp.bottom).offset(24)
             make.leading.trailing.bottom.equalToSuperview()
         }
+        
         basketImage.snp.makeConstraints { make in
             make.top.equalTo(basketButton.snp.top).offset(12)
             make.leading.equalTo(basketButton.snp.leading).offset(16)

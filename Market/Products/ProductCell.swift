@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class ProductCell: UICollectionViewCell {
 
@@ -23,6 +24,8 @@ final class ProductCell: UICollectionViewCell {
     private lazy var imageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "apples_image")
+        image.clipsToBounds = true
+        image.layer.cornerRadius = 12
         return image
     }()
 
@@ -47,9 +50,16 @@ final class ProductCell: UICollectionViewCell {
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.font = AppFont.semibold.s20()
-        label.text = "56 с"
         label.textColor = UIColor(named: "Market Green")
         label.textAlignment = .left
+        return label
+    }()
+
+    lazy var currencyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "c"
+        label.font = AppFont.semibold.s14()
+        label.textColor = UIColor(named: "Market Green")
         return label
     }()
 
@@ -122,6 +132,7 @@ private extension ProductCell {
 
         [stackView,
          priceLabel,
+         currencyLabel,
          addButton,
          minusButton,
          plusButton,
@@ -163,6 +174,11 @@ private extension ProductCell {
             make.top.equalTo(stackView.snp.bottom).offset(24)
             make.leading.equalToSuperview().offset(4)
             make.bottom.equalTo(addButton.snp.top).offset(-16)
+        }
+
+        currencyLabel.snp.makeConstraints { make in
+            make.leading.equalTo(priceLabel.snp.trailing).offset(2)
+            make.bottom.equalTo(priceLabel.snp.bottom)
         }
 
         addButton.snp.makeConstraints { make in
@@ -212,4 +228,21 @@ private extension ProductCell {
 extension ProductCell {
     // MARK: - Public properties
     public static let cellID = String(describing: ProductCell.self)
+
+    // MARK: - Public Methods
+    public func configureCell(with model: ProductsModel) {
+        title.text = model.title
+        if let priceString = model.price, let price = Double(priceString) {
+            let priceInteger = Int(price)
+            priceLabel.text = "\(priceInteger)"
+        } else {
+            priceLabel.text = "Not founded"
+        }
+
+        if let imageUrl = model.imageUrl, let url = URL(string: imageUrl) {
+            imageView.kf.setImage(with: url)
+        } else {
+            imageView.image = nil
+        }
+    }
 }

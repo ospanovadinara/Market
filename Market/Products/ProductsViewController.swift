@@ -18,6 +18,8 @@ final class ProductsViewController: UIViewController {
         "Чай кофе",
         "Молочные продукты",
     ]
+    private var productsLoader = ProductsLoader()
+    private var products: [ProductsModel] = []
 
     // MARK: - UI
     private lazy var  productsView: ProductsView = {
@@ -31,6 +33,7 @@ final class ProductsViewController: UIViewController {
         setupNavigationController()
         setupViews()
         setupConstraints()
+        fetchProducts()
     }
 }
 
@@ -83,6 +86,18 @@ private extension ProductsViewController {
             make.edges.equalToSuperview()
         }
     }
+
+    func fetchProducts() {
+        productsLoader.fetchProducts { result in
+            switch result {
+            case .success(let products):
+                self.products = products
+                self.productsView.productsCollectionView.reloadData()
+            case .failure(let error):
+                print("Error fetching products: \(error)")
+            }
+        }
+    }
 }
 
 extension ProductsViewController: UISearchBarDelegate {
@@ -94,7 +109,7 @@ extension ProductsViewController: UICollectionViewDataSource {
         if collectionView == productsView.categoriesCollectionView {
             return categories.count
         } else if collectionView == productsView.productsCollectionView {
-            return 12
+            return products.count
         }
 
         return 3
@@ -109,14 +124,18 @@ extension ProductsViewController: UICollectionViewDataSource {
             }
             cell.label.text = categories[indexPath.item]
             return cell
-        } else {
+        } else if collectionView == productsView.productsCollectionView {
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: ProductCell.cellID,
                 for: indexPath) as? ProductCell else {
                 fatalError("Could not cast to ProductCell")
             }
+            let model = products[indexPath.item]
+            cell.configureCell(with: model)
             return cell
         }
+
+        return UICollectionViewCell()
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
