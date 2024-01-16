@@ -43,6 +43,28 @@ final class ProductsView: UIView {
         return collectionView
     }()
 
+    lazy var basketButton: UIButton = {
+        let button = UIButton()
+        button.layer.cornerRadius = 25
+        button.backgroundColor = UIColor(named: "Market Green")
+        button.addTarget(self, action: #selector(basketButtonDidTap), for: .touchUpInside)
+        return button
+    }()
+
+    lazy var basketLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Корзина"
+        label.font = AppFont.medium.s16()
+        label.textColor = .white
+        return label
+    }()
+
+    lazy var basketImage: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "basket_image")
+        return image
+    }()
+
     // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -60,10 +82,16 @@ private extension ProductsView {
     func setupViews() {
         [searchBar,
          categoriesCollectionView,
-         productsCollectionView
+         productsCollectionView,
+         basketButton,
+         basketLabel
         ].forEach {
             self.addSubview($0)
         }
+
+        [basketImage,
+         basketLabel
+        ].forEach {  basketButton.addSubview($0)}
     }
 
     // MARK: - Setup Constraints
@@ -86,5 +114,27 @@ private extension ProductsView {
             make.top.equalTo(categoriesCollectionView.snp.bottom).offset(24)
             make.leading.trailing.bottom.equalToSuperview()
         }
+        basketImage.snp.makeConstraints { make in
+            make.top.equalTo(basketButton.snp.top).offset(12)
+            make.leading.equalTo(basketButton.snp.leading).offset(16)
+            make.bottom.equalTo(basketButton.snp.bottom).offset(-12)
+        }
+
+        basketLabel.snp.makeConstraints { make in
+            make.leading.equalTo(basketImage.snp.trailing).offset(6)
+            make.centerY.equalTo(basketImage.snp.centerY)
+        }
+
+        basketButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().offset(-50)
+            make.width.equalTo(168)
+            make.height.equalTo(48)
+        }
+    }
+
+    // MARK: - Actions
+    @objc func basketButtonDidTap() {
+        
     }
 }

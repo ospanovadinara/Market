@@ -10,6 +10,8 @@ import SnapKit
 
 final class ProductCell: UICollectionViewCell {
 
+    private var productCount = 0
+
     // MARK: - UI
     private lazy var view: UIView = {
         let view = UIView()
@@ -42,7 +44,7 @@ final class ProductCell: UICollectionViewCell {
         return stackView
     }()
 
-    private lazy var subtitle: UILabel = {
+    private lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.font = AppFont.semibold.s20()
         label.text = "56 с"
@@ -54,19 +56,26 @@ final class ProductCell: UICollectionViewCell {
     private lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
         button.layer.cornerRadius = 12
-        button.setTitle("Добавить цену", for: .normal)
+        button.setTitle("Добавить", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = AppFont.medium.s16()
         button.backgroundColor = UIColor(named: "Market Green")
+        button.addTarget(self,
+                         action: #selector(addButtonDidTap),
+                         for: .touchUpInside)
         return button
     }()
 
     private lazy var minusButton: UIButton = {
-        let button = UIButton(type: .system)
+        let button = UIButton(type: .custom)
         button.layer.cornerRadius = 16
         button.addTarget(self,
                          action: #selector(minusButtonDidTap),
                          for: .touchUpInside)
+        button.setTitle("-", for: .normal)
+        button.tintColor = .white
+        button.backgroundColor = UIColor(named: "Market Green")
+        button.isHidden = true
         return button
     }()
 
@@ -75,25 +84,23 @@ final class ProductCell: UICollectionViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 16
         button.addTarget(self,
-                         action: #selector(minusButtonDidTap),
+                         action: #selector(plusButtonDidTap),
                          for: .touchUpInside)
+        button.setTitle("+", for: .normal)
+        button.tintColor = .white
+        button.backgroundColor = UIColor(named: "Market Green")
+        button.isHidden = true
         return button
     }()
 
-    private lazy var counter: UILabel = {
+    private lazy var counterLabel: UILabel = {
         let label = UILabel()
-        label.text = "1"
+        label.text = "\(productCount)"
         label.font = AppFont.medium.s18()
         label.textColor = UIColor(named: "Market Black")
         label.textAlignment = .center
+        label.isHidden = true
         return label
-    }()
-
-    private lazy var counterStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.spacing = 43.5
-        return stackView
     }()
 
     override init(frame: CGRect) {
@@ -114,8 +121,11 @@ private extension ProductCell {
         ].forEach { stackView.addArrangedSubview($0) }
 
         [stackView,
-         subtitle,
-         addButton
+         priceLabel,
+         addButton,
+         minusButton,
+         plusButton,
+         counterLabel
         ].forEach { view.addSubview($0)}
 
         contentView.addSubview(view)
@@ -149,7 +159,7 @@ private extension ProductCell {
             make.height.equalTo(96)
         }
 
-        subtitle.snp.makeConstraints { make in
+        priceLabel.snp.makeConstraints { make in
             make.top.equalTo(stackView.snp.bottom).offset(24)
             make.leading.equalToSuperview().offset(4)
             make.bottom.equalTo(addButton.snp.top).offset(-16)
@@ -161,12 +171,41 @@ private extension ProductCell {
             make.bottom.equalToSuperview().offset(-4)
             make.height.equalTo(32)
         }
+
+        minusButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(4)
+            make.bottom.equalToSuperview().offset(-4)
+            make.height.equalTo(32)
+        }
+
+        plusButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-4)
+            make.bottom.equalToSuperview().offset(-4)
+            make.height.equalTo(32)
+        }
+
+        counterLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(plusButton.snp.centerY)
+            make.centerX.equalToSuperview()
+        }
     }
 
 
     // MARK: - Actions
     @objc func minusButtonDidTap() {
 
+    }
+
+    @objc func plusButtonDidTap() {
+
+    }
+
+    @objc func addButtonDidTap() {
+        addButton.isHidden = true
+        plusButton.isHidden = false
+        minusButton.isHidden = false
+        counterLabel.isHidden = false
+        counterLabel.text = "\(productCount)"
     }
 }
 
